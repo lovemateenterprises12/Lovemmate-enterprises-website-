@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hilarious-empanada-91d261.netlify.app/sitemap.xml
