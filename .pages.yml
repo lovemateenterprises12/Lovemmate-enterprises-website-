@@ -1,0 +1,8 @@
+media:
+  input: assets
+  output: /assets
+  extensions:
+    - jpg
+    - jpeg
+    - png
+    - webp
