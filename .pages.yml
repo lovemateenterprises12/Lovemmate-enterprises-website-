@@ -1,5 +1,4 @@
-media:
-  input: assets
+
   output: /assets
   extensions:
     - jpg
@@ -20,6 +19,6 @@ content:
       - name: description
         label: Project Description
         type: text
-      - name: image
+      - n
         label: Project Photo
         type: image
