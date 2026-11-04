@@ -84,7 +84,7 @@ footer{background:#041127;color:#d8e1ef;padding:28px 0}.footer-row{display:flex;
 <img src="assets/project-ceiling-2.jpg" alt="Ceiling lighting finish">
 </div><div class="about-copy"><div class="eyebrow">About the company</div><h2>A dependable partner for projects and everyday business</h2><p>LOVE-MATE ENTERPRISES is an Ibadan-based business providing electrical installation, solar solutions, CCTV installation, decorative lighting and site supervision, alongside property transactions and general trading.</p><p>Our goal is to give customers clear communication, practical service options and professional attention from first enquiry to project completion.</p><ul class="ticks"><li>Clear quotations</li><li>Customer-focused service</li><li>Residential and commercial work</li><li>Multiple business services</li></ul><a class="btn btn-blue" href="#contact">Talk to Our Team</a></div></div></section>
 <section class="section" id="projects"><div class="container"><div class="section-head"><div class="eyebrow">Our work</div><h2>Selected project photos</h2><p>Real project images from LOVE-MATE ENTERPRISES. Ask us about a service or project similar to what you see here.</p></div>
-<div class="gallery">
+<div class="gallery" id="projectGallery">
 <figure><img src="assets/project-ceiling-1.jpg" alt="Ceiling lighting project"><figcaption>Ceiling & Lighting</figcaption></figure>
 <figure><img src="assets/project-solar-site.jpg" alt="Solar installation work"><figcaption>Solar Installation</figcaption></figure>
 <figure><img src="assets/project-lighting-1.jpg" alt="Interior lighting project"><figcaption>Interior Lighting</figcaption></figure>
@@ -108,6 +108,32 @@ footer{background:#041127;color:#d8e1ef;padding:28px 0}.footer-row{display:flex;
 <a class="whatsapp" href="https://wa.me/2347054167419?text=Hello%20LOVE-MATE%20ENTERPRISES" aria-label="Chat with us on WhatsApp">WhatsApp</a>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+  fetch('/data/projects.json')
+  .then(response => {
+    if (!response.ok) throw new Error('Could not load projects');
+    return response.json();
+  })
+  .then(projects => {
+    const gallery = document.getElementById('projectGallery');
+    if (!gallery) return;
+
+    gallery.innerHTML = '';
+
+    projects.forEach(project => {
+      const figure = document.createElement('figure');
+      const img = document.createElement('img');
+      const caption = document.createElement('figcaption');
+
+      img.src = project.image;
+      img.alt = project.title || 'LOVE-MATE ENTERPRISES project';
+      caption.textContent = project.title || 'Our Project';
+
+      figure.appendChild(img);
+      figure.appendChild(caption);
+      gallery.appendChild(figure);
+    });
+  })
+  .catch(error => console.error('Project gallery error:', error));
 document.getElementById('quoteForm').addEventListener('submit', function(e){
  e.preventDefault();
  const name=document.getElementById('name').value.trim();
