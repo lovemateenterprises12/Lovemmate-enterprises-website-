@@ -1,7 +1,6 @@
-
-  media:
-  input: assets
-  output: /assets
+media:
+  input: projects
+  output: /projects
   extensions:
     - jpg
     - jpeg
@@ -11,10 +10,10 @@
 content:
   - name: projects
     label: Website Projects
-    type: collection
-    path: projects
+    type: file
+    path: data/projects.json
     format: json
-    filename: "{primary}.json"
+    list: true
     fields:
       - name: title
         label: Project Name
@@ -25,3 +24,5 @@ content:
       - name: image
         label: Project Photo
         type: image
+        options:
+          path: projects
