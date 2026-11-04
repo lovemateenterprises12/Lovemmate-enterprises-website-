@@ -1,4 +1,6 @@
 
+  media:
+  input: assets
   output: /assets
   extensions:
     - jpg
@@ -12,6 +14,7 @@ content:
     type: collection
     path: projects
     format: json
+    filename: "{primary}.json"
     fields:
       - name: title
         label: Project Name
@@ -19,6 +22,6 @@ content:
       - name: description
         label: Project Description
         type: text
-      - n
+      - name: image
         label: Project Photo
         type: image
