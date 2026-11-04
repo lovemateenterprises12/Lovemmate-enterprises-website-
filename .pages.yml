@@ -10,15 +10,13 @@ media:
 content:
   - name: projects
     label: Website Projects
-    type: file
-    path: data/projects.json
+    type: collection
+    path: projects
     format: json
-    list: true
     fields:
       - name: title
-        label: Project Title
+        label: Project Name
         type: string
-        required: true
       - name: description
         label: Project Description
         type: text
